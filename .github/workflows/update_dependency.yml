@@ -38,9 +38,7 @@ jobs:
     - name: copy dependency file
       run: |
         cp dependency/version.json main/modules/action-build-release.json
-    - name: remove dependency repository
-      run: |
-        rm -rf _tmp_dep
+        ls main/modules
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
@@ -48,5 +46,4 @@ jobs:
         title: Update Dependency
         body: Update dependency to reflect new release
         branch: chore/update-dependency
-        base: main
         path: main

@@ -34,6 +34,7 @@ jobs:
       with:
         repository: ${{ github.event.inputs.dependency_repo }}
         path: dependency
+        ref: main
     - name: copy dependency file
       run: |
         cp dependency/version.json main/modules/action-build-release.json

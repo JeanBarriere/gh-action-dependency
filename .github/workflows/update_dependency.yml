@@ -25,12 +25,18 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - uses: actions/checkout@v3
-    - name: clone dependency repository
-      run: |
-        git clone https://.:${{ GITHUB_TOKEN }}@github.com/${{ github.event.inputs.dependency_repo }} _tmp_dep
+    - name: Checkout main
+      uses: actions/checkout@v3
+      with:
+        path: main
+    - name: Checkout dependency
+      uses: actions/checkout@v3
+      with:
+        repository: ${{ github.event.inputs.dependency_repo }}
+        path: dependency
     - name: copy dependency file
       run: |
-        cp _tmp_dep/version.json modules/action-build-release.json
+        cp dependency/version.json main/modules/action-build-release.json
     - name: remove dependency repository
       run: |
         rm -rf _tmp_dep
@@ -42,4 +48,4 @@ jobs:
         body: Update dependency to reflect new release
         branch: chore/update-dependency
         base: main
-        
+        path: main

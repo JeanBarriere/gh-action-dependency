@@ -1,0 +1,15 @@
+{
+  "name": "gh-action-dependency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@ssh.github.com:443/JeanBarriere/gh-action-dependency.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
